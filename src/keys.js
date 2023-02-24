@@ -1,5 +1,6 @@
+import * as secp256k1 from '@noble/secp256k1'
 //import * as secp256k1 from '@noble/secp256k1'
-const {secp256k1} = require('@noble/secp256k1');
+//import { secp256k1 } from '@noble/secp256k1';
 
 /**
  * 
@@ -8,10 +9,13 @@ const {secp256k1} = require('@noble/secp256k1');
  */
 const privateKeyToWeb3Key = function(nsecKey){
 
+    console.log(secp256k1);
 
-    //return "eth"+nsecKey;
 
-    return secp256k1.utils.bytesToHex(secp256k1.utils.randomPrivateKey());
+
+    return "eth"+nsecKey;
+
+    //return secp256k1.utils.bytesToHex(secp256k1.utils.randomPrivateKey());
 }
 
 /**
@@ -22,12 +26,10 @@ const privateKeyToWeb3Key = function(nsecKey){
 const publicKeyToWeb3Address = function(npubKey){
 
 
-    return "ethp"+npubKey;
+    
 }
 
-
-
-module.exports = {
+export default {
 	privateKeyToWeb3Key,
     publicKeyToWeb3Address
 }

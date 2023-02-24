@@ -1,17 +1,19 @@
 {
   "name": "nostr-web3js",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "nostr private key signature access to blockchain, public key convert to wallet address",
   "main": "index.js",
   "scripts": {
     "test": "tape test/*.js"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nostrchain/nostr-web3js.git"
   },
   "keywords": [
     "nostr",
+    "nostrchain",
     "web3"
   ],
   "author": "nostrchain",
@@ -25,8 +27,6 @@
   },
   "dependencies": {
     "web3": "1.8.2",
-    "@noble/secp256k1": "^1.7.1",
-
-    "tape": "5.6.1"
+    "@noble/secp256k1": "^1.7.1"
   }
 }
