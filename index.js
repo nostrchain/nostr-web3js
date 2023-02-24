@@ -1,11 +1,10 @@
-
-const {privateKeyToWeb3Key} = require('./src/keys').default
-
-//import privateKeyToWeb3Key from './src/keys'
-
-module.exports = {
-	privateKeyToWeb3Key
-}
+import {privateKeyToWeb3Key,publicKeyToWeb3Address} from './src/keys.js'
 
 
+
+export {
+	privateKeyToWeb3Key,
+	publicKeyToWeb3Address
+
+} 
 

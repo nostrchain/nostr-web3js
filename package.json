@@ -6,7 +6,7 @@
   "scripts": {
     "test": "tape test/*.js"
   },
-
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nostrchain/nostr-web3js.git"
