@@ -26,7 +26,10 @@
     "tape": "^5.6.1"
   },
   "dependencies": {
-    "web3": "1.8.2",
-    "@noble/secp256k1": "^1.7.1"
+    "web3": "^1.8.2",
+    "ethers": "^5.7.2",
+    "js-sha3": "^0.8.0",
+    "ethereum-private-key-to-address": "^0.0.7",
+    "nostr-tools":"^1.1.2"
   }
 }

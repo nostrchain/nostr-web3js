@@ -1,10 +1,12 @@
-import {privateKeyToWeb3Key,publicKeyToWeb3Address} from './src/keys.js'
+import {privateKeyToWeb3Key,privateKeyToWeb3Address} from './src/keys.js'
 
 
 
 export {
 	privateKeyToWeb3Key,
-	publicKeyToWeb3Address
+	privateKeyToWeb3Address
+	
+
 
 } 
 
