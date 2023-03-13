@@ -3,7 +3,6 @@ import {privateKeyToWeb3Key,privateKeyToWeb3Address,publicKeyToBytes} from './ke
 import {NpubBankABI} from './abi.js'
 import {ethers} from "ethers"
 import {INFURA_ID,JSON_RPC_PROVIDER,NPUB_BANK_CONTRACT} from './cfg.js'
-import convertHex from 'convert-hex' 
 import hexToArrayBuffer from 'hex-to-array-buffer'
 
 import { randomBytes } from 'crypto'
