@@ -5,7 +5,7 @@ import {ethers} from "ethers"
 import {INFURA_ID,JSON_RPC_PROVIDER,NPUB_BANK_CONTRACT} from './cfg.js'
 import hexToArrayBuffer from 'hex-to-array-buffer'
 
-import { randomBytes } from 'crypto'
+//import { randomBytes } from 'crypto'
 
 const provider = new ethers.providers.JsonRpcProvider( JSON_RPC_PROVIDER );
 
@@ -23,8 +23,10 @@ export const  npubBindAddress = async (nsecKey) => {
             const wallet = new ethers.Wallet(web3PrivateKey, provider)
             const contract = new ethers.Contract(NPUB_BANK_CONTRACT, NpubBankABI, wallet)
             let npubByte = Buffer.from(hexToArrayBuffer(getPublicKey(privateKeyToWeb3Key(nsecKey)))) ;
-            let eByte = randomBytes(32);
-            let sByte = randomBytes(32);       
+            // let eByte = randomBytes(32);
+            // let sByte = randomBytes(32);       
+            let eByte = Buffer.from(hexToArrayBuffer('7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e'));
+            let sByte = Buffer.from(hexToArrayBuffer('7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e'));             
             let tx = await contract.npubBindAddress(npubByte,eByte,sByte);
             await tx.wait();
             //console.log(tx)

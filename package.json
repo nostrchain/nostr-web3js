@@ -1,6 +1,6 @@
 {
   "name": "nostr-web3js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "nostr private key signature access to blockchain, public key convert to wallet address",
   "main": "index.js",
   "scripts": {
