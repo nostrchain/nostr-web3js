@@ -4,6 +4,7 @@ import {ethers,utils} from "ethers"
 import sha3 from "js-sha3"
 import privateKeyToAddress from 'ethereum-private-key-to-address'
 import hexToArrayBuffer from 'hex-to-array-buffer'
+import {Buffer} from 'buffer'
 
 // import publicKeyToAddress from 'ethereum-public-key-to-address'
 

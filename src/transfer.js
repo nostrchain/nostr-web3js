@@ -4,6 +4,7 @@ import {NpubBankABI} from './abi.js'
 import {ethers} from "ethers"
 import {INFURA_ID,JSON_RPC_PROVIDER,NPUB_BANK_CONTRACT} from './cfg.js'
 import hexToArrayBuffer from 'hex-to-array-buffer'
+import {Buffer} from 'buffer'
 
 //import { randomBytes } from 'crypto'
 
