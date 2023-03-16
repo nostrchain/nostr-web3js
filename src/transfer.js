@@ -87,6 +87,7 @@ export const transferToNpub = async (nsecKey,npub,amount) =>{
             const npubByte32 = publicKeyToBytes(npub);
             console.log("npubByte32=",npubByte32)
             let to_addr = await contract.npubToAddress(npubByte32);
+            console.log("to_addr good =",to_addr)
             if(to_addr == "0x0000000000000000000000000000000000000000"){
                 let amountWei = ethers.utils.parseEther(String(amount));
                 let overrides = {
@@ -95,6 +96,7 @@ export const transferToNpub = async (nsecKey,npub,amount) =>{
                 };
                 let tx = await contract.sendToNpub(npubByte32,overrides);
                 let tt = await tx.wait();
+                console.log("tt =",tt);
                 if(tt.transactionHash.length > 0){
                     return resolve()
                 }
