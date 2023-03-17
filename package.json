@@ -1,6 +1,6 @@
 {
   "name": "nostr-web3js",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "nostr private key signature access to blockchain, public key convert to wallet address",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,8 @@
     "hex-to-array-buffer": "2.0.0",
     "ethers": "^5.7.2",
     "js-sha3": "^0.8.0",
-    "ethereum-private-key-to-address": "^0.0.7",
+    "keccak": "^3.0.1",
+    "secp256k1": "^4.0.2",
     "buffer": "6.0.3",
     "nostr-tools":"^1.1.2"
   }

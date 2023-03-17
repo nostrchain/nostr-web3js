@@ -2,7 +2,9 @@
 import {nip19, generatePrivateKey, getPublicKey} from 'nostr-tools'
 import {ethers,utils} from "ethers"
 import sha3 from "js-sha3"
-import privateKeyToAddress from 'ethereum-private-key-to-address'
+// import privateKeyToAddress from 'ethereum-private-key-to-address'
+import {privateKeyToAddress} from './ethkey.js'
+
 import hexToArrayBuffer from 'hex-to-array-buffer'
 import {Buffer} from 'buffer'
 

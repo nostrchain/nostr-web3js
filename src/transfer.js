@@ -32,7 +32,7 @@ export const  npubBindAddress = async (nsecKey) => {
             await tx.wait();
             //console.log(tx)
             if(tx.hash.length > 0){
-                return resolve()
+                return resolve(tx.hash)
             }
         }catch(err){
             return reject(err)
@@ -61,7 +61,7 @@ export const transferToAddress = async (nsecKey,address,amount) =>{
             const wallet = new ethers.Wallet(web3PrivateKey, provider);
             let tt = await wallet.sendTransaction(tx);
             if(tt.hash.length > 0){
-                return resolve()
+                return resolve(tt.hash)
             }
         }catch(err){
             return reject(err)
@@ -81,13 +81,14 @@ export const transferToAddress = async (nsecKey,address,amount) =>{
 export const transferToNpub = async (nsecKey,npub,amount) =>{
     return new Promise(async function (resolve, reject) {
         try{
+            console.log("nsecKey,npub,amount =",nsecKey,npub,amount)
             let web3PrivateKey = privateKeyToWeb3Key(nsecKey);
             const wallet = new ethers.Wallet(web3PrivateKey, provider)
             const contract = new ethers.Contract(NPUB_BANK_CONTRACT, NpubBankABI, wallet)
             const npubByte32 = publicKeyToBytes(npub);
             console.log("npubByte32=",npubByte32)
             let to_addr = await contract.npubToAddress(npubByte32);
-            console.log("to_addr good =",to_addr)
+            console.log("to_addr =",to_addr)
             if(to_addr == "0x0000000000000000000000000000000000000000"){
                 let amountWei = ethers.utils.parseEther(String(amount));
                 let overrides = {
@@ -98,7 +99,7 @@ export const transferToNpub = async (nsecKey,npub,amount) =>{
                 let tt = await tx.wait();
                 console.log("tt =",tt);
                 if(tt.transactionHash.length > 0){
-                    return resolve()
+                    return resolve(tt.transactionHash)
                 }
             }else{
                 const tx = {
@@ -108,7 +109,7 @@ export const transferToNpub = async (nsecKey,npub,amount) =>{
                 let tt = await wallet.sendTransaction(tx);
                 console.log("tt =",tt);
                 if(tt.hash.length > 0){
-                    return resolve()
+                    return resolve(tt.hash)
                 }
             }
 
@@ -134,15 +135,16 @@ export const getBankBalance = async (npub) =>{
             const contract = new ethers.Contract(NPUB_BANK_CONTRACT, NpubBankABI, provider)
             bankBalance = await contract.npubBalance(npubByte32);
             allBalance = allBalance.add(bankBalance)
-            let to_addr = await contract.npubToAddress(npubByte32);
-            if(to_addr == "0x0000000000000000000000000000000000000000"){
+            let addr = await contract.npubToAddress(npubByte32);
+            if(addr == "0x0000000000000000000000000000000000000000"){
             }else{
-                walletBalance = await provider.getBalance(to_addr);
+                walletBalance = await provider.getBalance(addr);
                 allBalance = allBalance.add(walletBalance)
             }
             return resolve([ethers.utils.formatUnits(allBalance,18),
                     ethers.utils.formatUnits(bankBalance,18),
-                    ethers.utils.formatUnits(walletBalance,18)])
+                    ethers.utils.formatUnits(walletBalance,18),
+                    addr])
         }catch(err){
             return reject(err)
         }
